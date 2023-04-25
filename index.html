@@ -3,57 +3,22 @@
     <head>
         <link rel="stylesheet" type="text/css" href="/style.css">
         <title>TicTacTrip</title>
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+        <!-- <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+        <script src="index.js" defer></script>
         <meta charset="utf-8">
 
     </head>
     <body>
         <h1> Bienvenue dans la page d'acceuil</h1>
-        <form action="/search" method="get">
-            <input type="text" name="q" class="search" placeholder="Rechercher une destination...">
+        <form action="/SearchBar" method="get">
+            <input type="text" id="search-input" name="q" class="search" placeholder="Rechercher une destination...">
             <button type="submit">Rechercher</button>
         </form>
-
-        <script>
-            import React, { useState, useEffect } from 'react';
-            import axios from 'axios';
-
-            function SearchBar() {
-                const [searchValue, setSearchValue] = useState('');
-                const [suggestions, setSuggestions] = useState([]);
-
-                const handleSearchInputChange = (event) => {
-                    setSearchValue(event.target.value);
-            };
-
-            useEffect(() => {
-                const fetchSuggestions = async () => {
-                    const response = await axios.get(`https://api.comparatrip.eu/cities/autocomplete/?q=${searchValue}`);
-                    setSuggestions(response.data);
-                };
-
-                if (searchValue.length > 0) {
-                    fetchSuggestions();
-                }
-            }, [searchValue]);
-
-            return (
-                <div>
-                <input type="text" value={searchValue} onChange={handleSearchInputChange} />
-                {suggestions.length > 0 && (
-                    <ul>
-                    {suggestions.map((suggestion) => (
-                        <li key={suggestion}>{suggestion}</li>
-                    ))}
-                    </ul>
-                )}
-                </div>
-            );
-            }
-
-            export default SearchBar;
-
-        </script>
+        <center><ul class="result" id="results-list"></ul></center>
     
+        
     </body>
 
 </html>
