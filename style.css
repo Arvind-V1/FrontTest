@@ -1,5 +1,5 @@
-
-body {
+body 
+{
     background-color: #ffffff;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
@@ -8,21 +8,47 @@ body {
 
 }
 
-.search {
+.barre
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search 
+{
   display: block;
   margin: 10px 0;
   padding: 6px;
   border: 10px solid #ccc;
-  width: 70%;
+  width: 100%;
+  height: 10%;
   box-sizing: border-box;
   float:center;
 }
 
+.Rechercher
+{
+  display: block;
+  border: 1% solid #ccc;
+  float: center;
+}
+
+.form
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 50%;
+}
+
 .result
 {
-  position: relative;
+  display: block;
+  justify-content: center;
   color: #001100;
   background-color: #A8A8A8;
-  width: 100%;
+  width: 30%;
   text-align: center;
 }
