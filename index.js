@@ -12,11 +12,12 @@ function popularCity()
     fetch(apiUrl)
       .then(response => response.json())
       .then(results => {
-        resultsList.innerHTML = '';
+        resultsList.innerHTML = '<p class="Dest">Destination populaire</p>';
         results.forEach(result => {
           const option = document.createElement('option');
           option.value = result.local_name;
           option.text  = result.local_name;
+          option.link  = result.local_name;
           resultsList.appendChild(option);
         });
       })
@@ -49,7 +50,9 @@ searchInput.addEventListener('input', function() {
   fetch(apiUrl2)
     .then(response => response.json())
     .then(results => {
-      resultsFrom.innerHTML = '';
+      if (results.length > 1) {
+        resultsFrom.innerHTML = '<p class="Dest">Destination populaire en partance de ' + searchTerm + '</p>';
+      }
       results.forEach(result => {
         const option = document.createElement('option');
         option.value = result.local_name;
@@ -59,5 +62,4 @@ searchInput.addEventListener('input', function() {
     })
     .catch(error => console.error(error));
 });
-
-popularCity();
+searchInput.onclick  = popularCity();
