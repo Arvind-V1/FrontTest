@@ -1,6 +1,6 @@
 body 
 {
-    background-color: #ffffff;
+    background-color: #bff5f9;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     margin: 0;
@@ -50,6 +50,7 @@ body
   margin:0;
   padding:0 0 0 0;
   text-align: center;
+  border-radius: 10px;
 }
 
 .Dest
