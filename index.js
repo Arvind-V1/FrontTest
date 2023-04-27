@@ -1,12 +1,8 @@
-const searchInput = document.getElementById('search-input');
-const resultsList = document.getElementById('results-list');
-const resultsFrom = document.getElementById('results-from');
+const searchInput = document.getElementById('search-input');//element de la barre de recherche
+const resultsList = document.getElementById('results-list');//emplacement d'affichage
+const resultsFrom = document.getElementById('results-from');//emplacement d'affichage
 
-searchInput.addEventListener('input', () => {
-  console.log(searchInput.value);
-});
-
-function popularCity()
+function popularCity() //Fonction pour les villes populaires
 {
   const apiUrl = `https://api.comparatrip.eu/cities/popular/5`;
     fetch(apiUrl)
@@ -17,7 +13,6 @@ function popularCity()
           const option = document.createElement('option');
           option.value = result.local_name;
           option.text  = result.local_name;
-          option.link  = result.local_name;
           resultsList.appendChild(option);
         });
       })
@@ -30,7 +25,7 @@ searchInput.addEventListener('input', function() {
   {
     popularCity();
   }  
-  const apiUrl = `https://api.comparatrip.eu/cities/autocomplete/?q=${searchTerm}`;
+  const apiUrl = `https://api.comparatrip.eu/cities/autocomplete/?q=${searchTerm}`;//autocomplete
   
   fetch(apiUrl)
     .then(response => response.json())
@@ -45,7 +40,7 @@ searchInput.addEventListener('input', function() {
     })
     .catch(error => console.error(error));
 
-    const apiUrl2 = `https://api.comparatrip.eu/cities/popular/from/${searchTerm}/5`;
+    const apiUrl2 = `https://api.comparatrip.eu/cities/popular/from/${searchTerm}/5`;//destination populaire
   
   fetch(apiUrl2)
     .then(response => response.json())
